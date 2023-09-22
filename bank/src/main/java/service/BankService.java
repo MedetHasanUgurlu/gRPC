@@ -11,9 +11,8 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     @Override
     public void drawMoney(final MoneyRequest request, final StreamObserver<MoneyResponse> responseObserver) {
         final int amount = request.getAmount();
-        Account
-
-
-        responseObserver.
+        final MoneyResponse moneyResponse = MoneyResponse.newBuilder().setAccount(75632*amount).build();
+        responseObserver.onNext(moneyResponse);
+        responseObserver.onCompleted();
     }
 }

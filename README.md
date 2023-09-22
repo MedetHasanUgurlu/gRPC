@@ -34,3 +34,26 @@ string empty  string \
 enum first value \
 repeated empty list \
 map wrapper empty map \
+
+
+
+## unary gRPC 
+
+### .proto
+    service BankService{
+        rpc getBalance(BalanceCheckRequest) returns (Balance);
+    }
+### .server
+    final Server server = ServerBuilder.forPort(6565).addService(new BankService()).build();
+        try {
+            server.start();
+            server.awaitTermination();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+### .client
+    final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
+    final BankServiceGrpc.BankServiceBlockingStub bankServiceBlockingStub = BankServiceGrpc.newBlockingStub(channel);
+    final MoneyResponse moneyResponse = bankServiceBlockingStub.drawMoney(MoneyRequest.newBuilder().setAmount(566).build());
+    System.out.println(moneyResponse.getAccount());
