@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="024b56d1-5f31-45dc-aa02-3073624c751d" name="Changes" comment="Bank-Project">
-      <change afterPath="$PROJECT_DIR$/bank/src/main/java/client/BankClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bank/src/main/java/server/GrpcServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bank/src/main/java/service/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bank/src/test/java/client/BankClientTestTest.java" afterDir="false" />
+    <list default="true" id="024b56d1-5f31-45dc-aa02-3073624c751d" name="Changes" comment="unary gRPC">
+      <change afterPath="$PROJECT_DIR$/bank/src/main/java/client/MoneyStreamResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank/src/main/java/client/BankClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/client/BankClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bank/src/main/java/service/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/java/service/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medron/protobuf/JPerson.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medron/protobuf/PerformanceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medron/protobuf/PersonDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank/src/main/proto/BankService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/bank/src/main/proto/BankService.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -159,7 +155,7 @@
       <workItem from="1695351493237" duration="12000" />
       <workItem from="1695351512879" duration="63000" />
       <workItem from="1695351577728" duration="78000" />
-      <workItem from="1695351667679" duration="4517000" />
+      <workItem from="1695351667679" duration="7967000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -193,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695354769616</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="unary gRPC">
+      <option name="closed" value="true" />
+      <created>1695357058539</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695357058539</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +209,8 @@
     <MESSAGE value="JSON VS PROTO" />
     <MESSAGE value="#2" />
     <MESSAGE value="Bank-Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bank-Project" />
+    <MESSAGE value="unary gRPC" />
+    <option name="LAST_COMMIT_MESSAGE" value="unary gRPC" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

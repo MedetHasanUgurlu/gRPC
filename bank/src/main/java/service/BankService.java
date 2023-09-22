@@ -15,4 +15,17 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
         responseObserver.onNext(moneyResponse);
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void withDraw(final MoneyRequest request, final StreamObserver<MoneyResponse> responseObserver) {
+        for (int i = 0; i < 10; i++) {
+            responseObserver.onNext(MoneyResponse.newBuilder().setAccount(request.getAmount()*i).build());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        responseObserver.onCompleted();
+    }
 }

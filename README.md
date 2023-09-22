@@ -57,3 +57,33 @@ map wrapper empty map \
     final BankServiceGrpc.BankServiceBlockingStub bankServiceBlockingStub = BankServiceGrpc.newBlockingStub(channel);
     final MoneyResponse moneyResponse = bankServiceBlockingStub.drawMoney(MoneyRequest.newBuilder().setAmount(566).build());
     System.out.println(moneyResponse.getAccount());
+
+## serverside streaming gRPC
+    final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
+    final BankServiceGrpc.BankServiceBlockingStub bankServiceBlockingStub = BankServiceGrpc.newBlockingStub(channel);
+    bankServiceBlockingStub.withDraw(MoneyRequest.newBuilder().setAmount(56).build()).forEachRemaining(moneyResponse1 -> System.out.println(moneyResponse1.getAccount()));
+
+### .proto
+    service BankService{
+        rpc withDraw(MoneyRequest) returns (stream MoneyRequest);
+    }
+### .server
+    final Server server = ServerBuilder.forPort(6565).addService(new BankService()).build();
+        try {
+            server.start();
+            server.awaitTermination();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+### .client
+#### sync client
+    final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
+    final BankServiceGrpc.BankServiceBlockingStub bankServiceBlockingStub = BankServiceGrpc.newBlockingStub(channel);
+    final MoneyResponse moneyResponse = bankServiceBlockingStub.drawMoney(MoneyRequest.newBuilder().setAmount(566).build());
+    System.out.println(moneyResponse.getAccount());
+
+#### async client
+
+    final BankServiceGrpc.BankServiceStub bankServiceNonStub = BankServiceGrpc.newStub(channel);
+    bankServiceNonStub.withDraw(MoneyRequest.newBuilder().setAmount(56).build(),new MoneyStreamResponse());
