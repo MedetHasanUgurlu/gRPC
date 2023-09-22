@@ -2,7 +2,7 @@ syntax = "proto3";
 package common;
 option java_multiple_files = true;
 option java_package = "com.medron.models";
-import "common/Car.proto";
+//import "common/Car.proto";
 
 
 
@@ -11,6 +11,6 @@ import "common/Car.proto";
 message Person{
   string name = 1;
   int32 age = 2;
-  repeated Car car = 3;
+//  repeated Car car = 3;
 }
 

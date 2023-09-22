@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common;
+option java_multiple_files = true;
+option java_package = "com.medron.service";
+
+message MoneyRequest{
+  int32 amount =1;
+}
+
+message MoneyResponse{
+  int32 account =1;
+}
+
+service BankService{
+
+  rpc drawMoney(MoneyRequest) returns (MoneyResponse);
+}
