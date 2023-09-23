@@ -90,3 +90,65 @@ map wrapper empty map \
 
 ### Deadline
 Balance balance = blockingStub.withDeadline(Deadline.after(2,TımeUnit.SECONDS)).getBalance(request);
+
+
+
+'
+    public class DeadlineInterceptor implements ClieentInterceptor{
+        @Override
+        public<ReqT,RespT> ClientCall<ReqT, ReespT> incerceptCall(MethodDescriptor<ReqT, RespT> methodDesriptor, CallOptions callOptions, Channel channel){
+            return channel.newCall(methodDescriptor, callOptions.withDeadLine(Deadline.after(4,TimeUnit.SECONDS)));
+        
+        }
+    }
+
+
+    .SERVER
+
+    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",6565).intercept(new DeadlineInterceptor()).usePlaintext().build();
+
+
+Interceptor\
+Attaching ClientService Token via Metadata
+
+
+    ClientConstants.java\
+    private static final Metadata METADATA = new Metadata();
+    static{
+        METADATA.put(Metadata.Key.of("client-token",Metadata.ASCII_STRING_MARSHALLER),"bacnk-client-secret");
+    }
+    public static Metadata getClientToken(){
+        return METADATA;
+    }
+    
+    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",6565)
+    .intercept(MetadataUtils.newAttachHeadersInterceptor(ClientConstants.getClientToken())).usePlaintext().build();
+
+    
+
+
+'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
