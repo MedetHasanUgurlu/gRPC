@@ -87,3 +87,6 @@ map wrapper empty map \
 
     final BankServiceGrpc.BankServiceStub bankServiceNonStub = BankServiceGrpc.newStub(channel);
     bankServiceNonStub.withDraw(MoneyRequest.newBuilder().setAmount(56).build(),new MoneyStreamResponse());
+
+### Deadline
+Balance balance = blockingStub.withDeadline(Deadline.after(2,TımeUnit.SECONDS)).getBalance(request);
